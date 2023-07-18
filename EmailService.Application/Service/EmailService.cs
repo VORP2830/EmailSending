@@ -16,11 +16,13 @@ namespace EmailService.Application.Service
             var email = Environment.GetEnvironmentVariable("EMAIL");
             var password = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
             var emailName = Environment.GetEnvironmentVariable("EMAIL_NAME");
+            var smtpServer = Environment.GetEnvironmentVariable("SMTP_SERVER");
+            var smtpPort = Environment.GetEnvironmentVariable("SMTP_PORT");
 
             MailMessage emailMessage = new MailMessage();
             try
             {
-                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                var smtpClient = new SmtpClient(smtpServer, 587);
                 smtpClient.Timeout = 30000;
                 smtpClient.EnableSsl = true;
                 smtpClient.UseDefaultCredentials = false;
