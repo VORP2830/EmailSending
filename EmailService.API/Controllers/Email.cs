@@ -20,6 +20,18 @@ namespace EmailService.API.Controllers
         {
             _emailService = emailService;
         }
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            try
+            {
+                return Ok("Acessado em " + DateTime.Now.ToLongDateString());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Ocorreu um erro: " + ex.Message);
+            }
+        }
         
         [HttpPost]
         public async Task<ActionResult> Post(EmailDTO model)
